@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: affinity
+spec:
+  affinity: # Podがどのノードにスケジューリングされるかを決めるためのアフィニティ設定
+    nodeAffinity: # Node Affinityを使って、このPodが実行されるノードを制限している
+      requiredDuringSchedulingIgnoredDuringExecution: # Podがスケジューリングされるときに必要だが、実行中には無視される条件
+        nodeSelectorTerms: # Podがスケジューリングされるために一致する必要がある条件を定義
+        - matchExpressions: # ノードのラベルsizeがlargeであるという条件を指定
+          - key: size
+            operator: In
+            values:
+            - large # sizeというラベルの値がlargeであるノードにのみこのPodがスケジューリングされる
+  containers:
+  - name: affinity
+    image: nginx:alpine

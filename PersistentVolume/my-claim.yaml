@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-claim
+spec:
+  accessModes:
+    - ReadWriteMany # PVと同じモードを指定
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 200Mi # 必要なサイズは200MB（PVの1Giには十分収まる）
+  storageClassName: sc # PVのStorageClassと一致している

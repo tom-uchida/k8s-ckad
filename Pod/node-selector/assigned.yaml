@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: assigned
+  name: assigned
+spec:
+  nodeSelector: # add nodeSelectorは、Podを特定のノードにスケジューリングするためのシンプルな方法
+    disktype: ssd # add disktypeラベルがssdであるノードにのみPodをスケジューリングする
+  containers:
+  - image: httpd
+    name: assigned
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

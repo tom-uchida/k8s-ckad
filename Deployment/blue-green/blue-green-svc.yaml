@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app-version":"blue","product":"my-web-app"},"name":"blue-green-svc","namespace":"b
+  creationTimestamp: "2025-04-27T13:22:16Z"
+  labels:
+    app-version: blue
+    product: my-web-app
+  name: blue-green-svc
+  namespace: bgd
+  resourceVersion: "4037"
+  uid: b3d8d48b-eeb0-4df3-b2cf-738dcbf2d5ef
+spec:
+  clusterIP: 10.105.108.47
+  clusterIPs:
+  - 10.105.108.47
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 31230
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app-version: green # from blue to green
+    product: my-web-app
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
