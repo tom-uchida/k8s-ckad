@@ -1,4 +1,4 @@
-# 01-Pod
+# multiple-containers
 
 ```bash
 k run multiple --image=httpd $do > multiple.yaml

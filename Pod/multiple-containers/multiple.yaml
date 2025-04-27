@@ -8,11 +8,11 @@ metadata:
 spec:
   containers:
   - image: httpd
-    name: primary
+    name: primary # edit
     resources: {}
-  - image: busybox
-    name: secondary
-    command: ["sh", "-c", "sleep 3600"]
+  - image: busybox # add
+    name: secondary # add
+    command: ["sh", "-c", "sleep 3600"] # add
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}

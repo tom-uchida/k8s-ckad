@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: init-pod
+  name: init-pod
+spec:
+  volumes: # add
+  - name: index # add
+    emptyDir: {} # add
+  containers:
+  - image: nginx:alpine
+    name: nginx
+    ports: # add
+    - containerPort: 80 # add
+    resources: {}
+    volumeMounts: # add
+    - name: index # add
+      mountPath: /usr/share/nginx/html # add
+  initContainers: # add
+  - name: init # add
+    image: busybox # add
+    volumeMounts: # add
+    - name: index # add
+      mountPath: /etc/init # add
+    command: ["sh", "-c", "echo 'Hello, World!' > /etc/init/index.html"] # add
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

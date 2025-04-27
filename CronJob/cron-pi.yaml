@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: cron-pi
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: cron-pi
+    spec:
+      completions: 5 # add 全部で5回成功したら終わり
+      parallelism: 2 # add 2個ずつPodを動かす
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - image: perl
+            name: cron-pi
+            command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(100)"] # add
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: '*/1 * * * *'
+status: {}
