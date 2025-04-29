@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: exec-readiness
+  name: exec-readiness
+spec:
+  containers:
+  - command:
+    - sh
+    - -c
+    - mkdir -p /etc/ready/probe; sleep 3600;
+    image: busybox
+    name: exec-readiness
+    resources: {}
+    readinessProbe: # add 「コンテナがリクエストを受け付ける準備ができているか」をチェックするための設定
+      exec: # add
+        command: ["sh", "-c", "ls /etc/ready/probe"] # add このコマンドをPod内で実行する
+      initialDelaySeconds: 8 # add
+      periodSeconds: 5 # add
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

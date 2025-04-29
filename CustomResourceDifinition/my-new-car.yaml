@@ -1,0 +1,7 @@
+apiVersion: "stable.example.com/v1"
+kind: Vehicle # edit
+metadata:
+  name: my-new-car # edit
+spec:
+  vehicleType: car # add
+  color: red # add

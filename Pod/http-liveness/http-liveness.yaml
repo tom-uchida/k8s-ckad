@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: http-liveness
+  name: http-liveness
+spec:
+  containers:
+  - image: nginx
+    name: http-liveness
+    resources: {}
+    livenessProbe: # add コンテナが「正常に動作しているか」をKubernetesが監視する設定
+      httpGet: # add HTTPリクエストで / パスにアクセスし、ステータスコードが200〜399なら「正常」と判断する
+        path: / # add
+        port: 80 # add
+      initialDelaySeconds: 3 # add コンテナ起動後、3秒経ってから初回のチェックを開始
+      periodSeconds: 5 # add 5秒ごとにチェックを行う
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
