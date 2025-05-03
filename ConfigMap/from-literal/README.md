@@ -1,4 +1,4 @@
-# ConfigMap
+# from-literal
 
 ```bash
 k create cm exam-config-map --from-literal=EXAM_CODE=CKAD
@@ -12,6 +12,4 @@ k run exam --image=busybox $do --command -- sh -c "echo \$EXAM_CODE > /etc/examc
 
 vi exam.yaml 
 k apply -f exam.yaml
-
-
 ```

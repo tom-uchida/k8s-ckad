@@ -1,4 +1,4 @@
-# 
+# from-file
 
 ```bash
 k create cm my-index-html --from-file=index.html
