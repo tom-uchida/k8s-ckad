@@ -1,0 +1,21 @@
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: my-index
+  name: my-index
+spec:
+  containers:
+  - image: nginx
+    name: my-index
+    resources: {}
+    volumeMounts: # add
+    - name: index # add
+      mountPath: /usr/share/nginx/html # add
+  volumes: # add
+  - name: index # add
+    configMap: # add
+      name: my-index-html # add
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

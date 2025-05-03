@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  EXAM_CODE: CKAD
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: exam-config-map
