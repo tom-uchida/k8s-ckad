@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logger
+spec:
+  volumes: # add
+    - name: log # add
+      persistentVolumeClaim: # add
+        claimName: log-claim # add PVCの名前を指定
+  containers:
+  - image: nginx:alpine
+    name: logger
+    resources: {}
+    volumeMounts: # add
+      - name: log # add volumeMounts → volumes → persistentVolumeClaim の流れでPVCを参照
+        mountPath: /var/www/nginx # add PVCで確保したストレージをマウント。
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

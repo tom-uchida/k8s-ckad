@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2025-05-04T14:02:09Z"
+  generation: 1
+  name: network-policy # edit
+  namespace: default
+  resourceVersion: "2843"
+  uid: 879b5b93-996c-4c02-98c1-31038010a253
+spec:
+  podSelector:
+    matchLabels: # add
+      run: secure-pod # add このポリシーは、default ネームスペース内でラベル run=secure-pod を持つPodにのみ適用されます。
+  policyTypes:
+  - Ingress
+  ingress: # add
+    - from: # add
+      - podSelector: # add
+          matchLabels: # add
+            name: webapp-color # add 発信元Podが name=webapp-color のラベルを持つPodからの入力を許可
+      ports: # add
+        - protocol: TCP # add
+          port: 80 # add
