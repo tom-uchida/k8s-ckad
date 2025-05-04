@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: "2025-05-04T05:30:52Z"
+  name: deployer-binding
+  namespace: default
+  resourceVersion: "3106"
+  uid: c42d98a2-35b5-46a4-b558-ed63176ba27b
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: deployer-role
+subjects:
+- kind: ServiceAccount
+  name: deployer-sa
+  namespace: default

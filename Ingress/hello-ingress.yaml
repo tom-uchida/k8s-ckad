@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress # Ingressは、HTTP(S) トラフィックを 外部から内部のServiceにルーティングするための設定
+metadata:
+  creationTimestamp: "2025-05-04T07:26:00Z"
+  generation: 1
+  name: hello-ingress
+  namespace: default
+  resourceVersion: "4687"
+  uid: 332f6392-2f26-483b-a1be-c6c54f0bbf6d
+spec:
+  ingressClassName: nginx # 使用するIngress Controllerを指定（NGINX Ingress Controllerがデプロイされている必要がある）
+  rules:
+  - host: hello-ckad.example # 外部から http://hello-ckad.example にアクセスされたリクエストが対象
+    http:
+      paths:
+      - backend:
+          service:
+            name: hello-svc # リクエストを転送する先のService
+            port:
+              number: 80 # Serviceのポート80番へ転送
+        path: /
+        pathType: Exact
+status:
+  loadBalancer: {}

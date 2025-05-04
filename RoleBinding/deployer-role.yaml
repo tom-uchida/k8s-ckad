@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: "2025-05-04T05:30:20Z"
+  name: deployer-role
+  namespace: default
+  resourceVersion: "3060"
+  uid: 633cc20e-b100-4c31-bbc4-294f382e2634
+rules:
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - create

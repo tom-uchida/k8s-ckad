@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2025-05-04T06:46:27Z"
+  labels:
+    app: nginx-deploy
+  name: nginx-svc
+  namespace: default
+  resourceVersion: "2476"
+  uid: 9ccd4024-9955-40bc-bd01-add9815784e0
+spec:
+  clusterIP: 10.102.204.95 # クラスタ内でこのサービスにアクセスするための内部IPアドレス
+  clusterIPs:
+  - 10.102.204.95
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 30804 # ノードのIPアドレス + このポート番号（30804）で外部アクセスが可能
+    port: 80 # サービス自身のポート番号
+    protocol: TCP
+    targetPort: 80 # 対象Podがリッスンしているポート
+  selector:
+    app: nginx-deploy
+  sessionAffinity: None
+  type: NodePort # 各ノードのIPアドレスと指定されたポート番号で外部からアクセス可能
+status:
+  loadBalancer: {}

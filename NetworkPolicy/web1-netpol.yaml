@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+# NetworkPolicyは、Pod間の通信を制御するための仕組みで、
+# 「どのPodがどのPodに対して通信できるか（Ingress / Egress）」を細かく設定できる
+kind: NetworkPolicy 
+metadata:
+  name: web1-netpol
+  namespace: backend # このポリシーが適用される名前空間
+spec:
+  podSelector:
+    matchLabels:
+      type: web1 # このポリシーの対象は、type=web1 ラベルを持つPod
+  policyTypes:
+  - Ingress # 外部（他のPod）からこのPodへの通信
+  - Egress # このPodから外部（他のPod）への通信
+  ingress: # type=web3 のPodからの TCPポート80番 宛て通信のみを受け入れます
+  - from:
+    - podSelector:
+        matchLabels:
+          type: web3
+    ports:
+    - protocol: TCP
+      port: 80
+  egress: # type=web1 のPodは、type=web3 のPodへ TCPポート80番 にだけ通信できる
+  - to:
+    - podSelector:
+        matchLabels:
+          type: web3
+    ports:
+    - protocol: TCP
+      port: 80

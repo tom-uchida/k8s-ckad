@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2025-05-04T05:50:48Z"
+  labels:
+    app: httpd-deploy
+  name: httpd-svc
+  namespace: default
+  resourceVersion: "2662"
+  uid: 85f82518-e8cf-404f-93dd-e75a84508bea
+spec:
+  clusterIP: 10.107.32.158 # サービスに割り当てられた内部IPアドレス
+  clusterIPs:
+  - 10.107.32.158
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80 # サービス側のポート
+    protocol: TCP
+    targetPort: 80 # Podがリッスンしているポート
+  selector:
+    app: httpd-deploy
+  sessionAffinity: None
+  type: ClusterIP # クラスタ内からのみアクセス可能
+status:
+  loadBalancer: {}

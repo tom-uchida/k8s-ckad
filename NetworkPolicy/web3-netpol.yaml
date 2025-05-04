@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: web3-netpol
+  namespace: backend
+spec:
+  podSelector:
+    matchLabels:
+      type: web3
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          type: web1
+    ports:
+    - protocol: TCP
+      port: 80
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          type: web1
+    ports:
+    - protocol: TCP
+      port: 80

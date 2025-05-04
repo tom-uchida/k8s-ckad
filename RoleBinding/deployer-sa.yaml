@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2025-05-04T05:29:54Z"
+  name: deployer-sa
+  namespace: default
+  resourceVersion: "3023"
+  uid: 525cd1cb-ca43-49f4-b8ce-197254a37fae
