@@ -17,12 +17,12 @@ spec:
       labels:
         app: redis
     spec:
-      volumes: # add
+      volumes: # add Pod内のコンテナで共有されるボリューム（ストレージ）を定義
       - name: data # add
-        emptyDir: {} # add
+        emptyDir: {} # add 空の一時ディレクトリ（Pod削除時にデータも削除される）
       - name: redis-config # add
         configMap: # add
-          name: redis-config # add
+          name: redis-config # add redis-config という名前の ConfigMap をマウント
       containers:
       - image: redis:alpine
         name: redis
@@ -31,9 +31,9 @@ spec:
             cpu: "0.2" # add
         volumeMounts: # add
           - name: data # add
-            mountPath: /redis-master-data # add
+            mountPath: /redis-master-data # add data ボリュームを /redis-master-data にマウント
           - name: redis-config # add
-            mountPath: /redis-master # add
+            mountPath: /redis-master # add ConfigMapを /redis-master にマウント
         ports: # add
-          - containerPort: 6379 # add
+          - containerPort: 6379 # add Redisの標準ポート（6379）を開放
 status: {}
