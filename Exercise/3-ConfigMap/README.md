@@ -20,7 +20,8 @@ configmap/time-config created
 
 k run time-check --image=busybox --dry-run=client -oyaml > time-check.yaml
 
-vi time-check.yaml 
+vi time-check.yaml
 
-k apply -f time-check.yaml 
+k apply -f time-check.yaml
+pod/time-check created
 ```

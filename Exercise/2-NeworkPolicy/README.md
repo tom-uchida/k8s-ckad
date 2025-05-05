@@ -41,7 +41,7 @@ Spec:
   Not affecting egress traffic
   Policy Types: Ingress
 
-  k get pods --show-labels
+k get pods --show-labels
 NAME           READY   STATUS    RESTARTS   AGE     LABELS
 logger         1/1     Running   0          6m29s   <none>
 secure-pod     1/1     Running   0          5m3s    run=secure-pod
@@ -51,6 +51,6 @@ k get netpol dfault-deny -o yaml > netpol.yaml
 
 vi netpol.yaml
 
-k apply -f netpol.yaml 
+k apply -f netpol.yaml
 networkpolicy.networking.k8s.io/network-policy created
 ```

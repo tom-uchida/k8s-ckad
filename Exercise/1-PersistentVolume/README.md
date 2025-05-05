@@ -18,16 +18,16 @@ This pod should use the image nginx:alpine.
 ```bash
 vi log-volume.yaml
 
-k apply -f log-volume.yaml 
+k apply -f log-volume.yaml
 persistentvolume/log-volume created
 
 vi log-claim.yaml
 
-k apply -f log-claim.yaml 
+k apply -f log-claim.yaml
 persistentvolumeclaim/log-claim created
 
 k run logger --image=nginx:alpine --dry-run=client -o yaml > logger.yaml
 
-k apply -f logger.yaml 
+k apply -f logger.yaml
 pod/logger created
 ```

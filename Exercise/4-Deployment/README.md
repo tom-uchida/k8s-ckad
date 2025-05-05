@@ -19,17 +19,17 @@ vi nginx-deploy.yaml
 k apply -f nginx-deploy.yaml
 deployment.apps/nginx-deploy created
 
-k set image  deployment nginx-deploy nginx=nginx:1.17
+k set image deployment nginx-deploy nginx=nginx:1.17
 deployment.apps/nginx-deploy image updated
 
 k get deploy
 NAME           READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deploy   4/4     4            4           2m57s
 
-k rollout undo deployment nginx-deploy 
+k rollout undo deployment nginx-deploy
 deployment.apps/nginx-deploy rolled back
 
 k get deploy
 NAME           READY   UP-TO-DATE   AVAILABLE   AGE
-nginx-deploy   2/4     3            2           3m23s
+nginx-deploy   4/4     4            4           57s
 ```
