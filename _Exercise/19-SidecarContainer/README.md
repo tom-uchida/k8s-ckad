@@ -33,14 +33,25 @@ logger   2/2     Running   0          23s
 / # ls /tmp/log/output/
 buffer.b64468fa3393b3d4a3223dfcacdf6d18f.log       buffer.b64468fa3393b3d4a3223dfcacdf6d18f.log.meta
 / # tail /tmp/log/output/buffer.b64468fa3393b3d4a3223dfcacdf6d18f.log
-2025-11-25T10:46:05+00:00       logger.format1  {"dt":"Tue Nov 25 10:46:04 UTC 2025"}
-2025-11-25T10:46:15+00:00       logger.format1  {"dt":"Tue Nov 25 10:46:14 UTC 2025"}
-2025-11-25T10:46:25+00:00       logger.format1  {"dt":"Tue Nov 25 10:46:24 UTC 2025"}
-2025-11-25T10:46:35+00:00       logger.format1  {"dt":"Tue Nov 25 10:46:34 UTC 2025"}
-2025-11-25T10:46:45+00:00       logger.format1  {"dt":"Tue Nov 25 10:46:44 UTC 2025"}
-2025-11-25T10:46:55+00:00       logger.format1  {"dt":"Tue Nov 25 10:46:54 UTC 2025"}
-2025-11-25T10:47:05+00:00       logger.format1  {"dt":"Tue Nov 25 10:47:04 UTC 2025"}
-2025-11-25T10:47:15+00:00       logger.format1  {"dt":"Tue Nov 25 10:47:14 UTC 2025"}
-2025-11-25T10:47:25+00:00       logger.format1  {"dt":"Tue Nov 25 10:47:24 UTC 2025"}
-2025-11-25T10:47:35+00:00       logger.format1  {"dt":"Tue Nov 25 10:47:34 UTC 2025"}
+2025-11-25T10:48:55+00:00       logger.format1  {"dt":"Tue Nov 25 10:48:54 UTC 2025"}
+2025-11-25T10:49:05+00:00       logger.format1  {"dt":"Tue Nov 25 10:49:04 UTC 2025"}
+2025-11-25T10:49:15+00:00       logger.format1  {"dt":"Tue Nov 25 10:49:14 UTC 2025"}
+2025-11-25T10:49:25+00:00       logger.format1  {"dt":"Tue Nov 25 10:49:24 UTC 2025"}
+2025-11-25T10:49:35+00:00       logger.format1  {"dt":"Tue Nov 25 10:49:34 UTC 2025"}
+2025-11-25T10:49:45+00:00       logger.format1  {"dt":"Tue Nov 25 10:49:44 UTC 2025"}
+2025-11-25T10:49:55+00:00       logger.format1  {"dt":"Tue Nov 25 10:49:54 UTC 2025"}
+2025-11-25T10:50:05+00:00       logger.format1  {"dt":"Tue Nov 25 10:50:04 UTC 2025"}
+2025-11-25T10:50:15+00:00       logger.format1  {"dt":"Tue Nov 25 10:50:14 UTC 2025"}
+2025-11-25T10:50:25+00:00       logger.format1  {"dt":"Tue Nov 25 10:50:24 UTC 2025"}
+/ # tail /tmp/log/input.log 
+{"dt": "Tue Nov 25 10:48:54 UTC 2025"}
+{"dt": "Tue Nov 25 10:49:04 UTC 2025"}
+{"dt": "Tue Nov 25 10:49:14 UTC 2025"}
+{"dt": "Tue Nov 25 10:49:24 UTC 2025"}
+{"dt": "Tue Nov 25 10:49:34 UTC 2025"}
+{"dt": "Tue Nov 25 10:49:44 UTC 2025"}
+{"dt": "Tue Nov 25 10:49:54 UTC 2025"}
+{"dt": "Tue Nov 25 10:50:04 UTC 2025"}
+{"dt": "Tue Nov 25 10:50:14 UTC 2025"}
+{"dt": "Tue Nov 25 10:50:24 UTC 2025"}
 ```
