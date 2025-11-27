@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: secure-redis
+  name: secure-redis
+  namespace: context
+spec:
+  containers:
+  - image: redis:alpine
+    name: secure-redis
+    resources: {}
+    securityContext: # added
+      runAsUser: 2000 # added
+      capabilities: # added
+        add: ["NET_ADMIN"] # added
+      allowPrivilegeEscalation: true # added
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

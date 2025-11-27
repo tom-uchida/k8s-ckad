@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{},"name":"info-ingress","namespace":"path-ingress"},"spec":{"ingressClassName":"nginx","rules":[{"host":"path-ingress.info","http":{"paths":[{"backend":{"service":{"name":"contact-svc","port":{"number":80}}},"path":"/contact","pathType":"Prefix"}]}}]}}
+  creationTimestamp: "2025-11-27T10:25:49Z"
+  generation: 2
+  name: info-ingress
+  namespace: path-ingress
+  resourceVersion: "5290"
+  uid: c8e823a8-ea44-41f5-a202-8e7034042a57
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: path-ingress.info
+    http:
+      paths:
+      - backend: # added
+          service: # added
+            name: menu-svc # added
+            port: # added
+              number: 80 # added
+        path: /menu # added
+        pathType: Prefix # added
+      - backend:
+          service:
+            name: contact-svc
+            port:
+              number: 80
+        path: /contact
+        pathType: Prefix
+status:
+  loadBalancer: {}
