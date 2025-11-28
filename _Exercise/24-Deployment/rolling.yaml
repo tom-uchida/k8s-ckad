@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rolling
+  name: rolling
+  namespace: rolling-update
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: rolling
+  strategy:
+    type: RollingUpdate # added
+    rollingUpdate: # added
+      maxSurge: 20% # added
+      maxUnavailable: 2 # added
+  template:
+    metadata:
+      labels:
+        app: rolling
+    spec:
+      containers:
+      - image: redis:6.2-alpine
+        name: redis
+        resources: {}
+status: {}
